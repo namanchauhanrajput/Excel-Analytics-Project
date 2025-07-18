@@ -10,7 +10,7 @@ export const DashboardHistory = () => {
 
   const fetchHistory = useCallback(async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/charts/history", {
+      const res = await axios.get("https://excel-analytics-project.onrender.com/api/charts/history", {
         headers: { Authorization: authorizationToken },
       });
       setHistory(res.data);
@@ -21,7 +21,7 @@ export const DashboardHistory = () => {
 
   const handleDelete = async (chartId) => {
     try {
-      await axios.delete(`http://localhost:5000/api/charts/delete/${chartId}`, {
+      await axios.delete(`https://excel-analytics-project.onrender.com/api/charts/delete/${chartId}`, {
         headers: { Authorization: authorizationToken },
       });
       setSelectedChart(null);
