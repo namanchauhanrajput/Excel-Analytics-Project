@@ -31,7 +31,7 @@ export const Home = () => {
                             <div className="flex flex-row gap-4 justify-center md:justify-start">
                                 <a href="/dashboard">
                                     <button className=" bg-gradient-to-r from-blue-700 to-purple-700 text-white px-6 py-3 rounded-xl hover:bg-purple-700 transition shadow-md">
-                                        Contact Now
+                                        Dashboard
                                     </button>
                                 </a>
                             </div>
@@ -110,7 +110,7 @@ export const Home = () => {
                         <div className="flex flex-row gap-4 justify-center md:justify-start">
                             <a href="/dashboard">
                                 <button className="bg-gradient-to-r from-blue-700 to-purple-700 text-white px-6 py-3 rounded-xl hover:bg-purple-700 transition shadow-md">
-                                    Contact Now
+                                    Dashboard
                                 </button>
                             </a>
                         </div>
