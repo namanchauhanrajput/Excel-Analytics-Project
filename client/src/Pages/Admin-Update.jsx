@@ -22,7 +22,7 @@ export const AdminUpdate = () => {
   useEffect(() => {
     const getUserData = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/admin/users/${id}`, {
+        const response = await fetch(`https://excel-analytics-project.onrender.com/api/admin/users/${id}`, {
           headers: {
             Authorization: authorizationToken,
           },
@@ -47,7 +47,7 @@ export const AdminUpdate = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch(`http://localhost:5000/api/admin/users/update/${id}`, {
+      const response = await fetch(`https://excel-analytics-project.onrender.com/api/admin/users/update/${id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
