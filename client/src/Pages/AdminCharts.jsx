@@ -10,7 +10,7 @@ export const AdminCharts = () => {
 
   const fetchCharts = useCallback(async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/charts", {
+      const res = await axios.get("https://excel-analytics-project.onrender.com/api/charts", {
         headers: {
           Authorization: authorizationToken,
         },
@@ -26,7 +26,7 @@ export const AdminCharts = () => {
     if (!confirm) return;
 
     try {
-      await axios.delete(`http://localhost:5000/api/charts/delete/${chartId}`, {
+      await axios.delete(`https://excel-analytics-project.onrender.com/api/charts/delete/${chartId}`, {
         headers: {
           Authorization: authorizationToken,
         },
