@@ -29,7 +29,7 @@ export const DashboardLayout = () => {
   // Fetch Chart Stats
   const fetchChartStats = useCallback(async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/charts/history", {
+      const res = await axios.get("https://excel-analytics-project.onrender.com/api/charts/history", {
         headers: { Authorization: authorizationToken },
       });
 
