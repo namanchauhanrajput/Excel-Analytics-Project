@@ -72,7 +72,7 @@ export const DashboardUpload = () => {
 
     // Save chart data to backend
     try {
-      const res = await axios.post("http://localhost:5000/api/charts/save", chartPayload, {
+      const res = await axios.post("https://excel-analytics-project.onrender.com/api/charts/save", chartPayload, {
         headers: { Authorization: authorizationToken },
       });
       console.log("Chart saved:", res.data);
