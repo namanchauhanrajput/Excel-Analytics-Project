@@ -2,7 +2,7 @@ export const Home = () => {
     return (
         <>
             {/* Full screen purple background */}
-            <div className="min-h-screen bg-gradient-to-br from-purple-400 to-purple-200 relative flex flex-col items-center justify-center text-center px-4">
+            <div className="min-h-screen bg-gradient-to-br from-purple-600 to-purple-300 relative flex flex-col items-center justify-center text-center px-4">
 
                 {/* Sign In button on top-right */}
                 <div className="absolute top-6 right-6">
