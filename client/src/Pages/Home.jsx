@@ -8,9 +8,9 @@ export const Home = () => {
 
                 {/* Sign In button on top-right */}
                 <div className="absolute top-6 right-6">
-                    <NavLink to="/login">
+                    <NavLink to="/register">
                         <button className="bg-white text-purple-700 font-semibold px-5 py-2 rounded-xl shadow hover:bg-purple-100 transition">
-                            Sign In
+                            Sign Up
                         </button>
                     </NavLink>
                 </div>
@@ -25,9 +25,9 @@ export const Home = () => {
                         Upload and visualize Excel files with interactive charts and smart insights
                     </p>
 
-                    <NavLink to="/dashboard">
+                    <NavLink to="/login">
                         <button className="bg-white text-purple-700 font-bold px-6 py-3 rounded-xl hover:bg-purple-100 transition shadow-lg">
-                            Get Started
+                            Get Started -- Login
                         </button>
                     </NavLink>
                 </div>
