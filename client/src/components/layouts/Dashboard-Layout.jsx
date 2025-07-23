@@ -1,5 +1,5 @@
 import { Outlet, NavLink, useLocation, useNavigate } from "react-router-dom";
-import { FileUp, History, Menu, X } from "lucide-react";
+import { FileUp, History, Menu, X, BrainCircuit } from "lucide-react"; // 🧠 icon added
 import { useAuth } from "../../store/auth";
 import { useEffect, useState, useCallback } from "react";
 import axios from "axios";
@@ -18,15 +18,11 @@ export const DashboardLayout = () => {
 
   const isHome = location.pathname === "/dashboard";
 
-  // Toggle Sidebar on small devices
   const toggleSidebar = () => setIsSidebarOpen((prev) => !prev);
-
-  // Close Sidebar on mobile after clicking a nav item
   const handleNavClick = () => {
     if (window.innerWidth < 640) setIsSidebarOpen(false);
   };
 
-  // Fetch Chart Stats
   const fetchChartStats = useCallback(async () => {
     try {
       const res = await axios.get("https://excel-analytics-project.onrender.com/api/charts/history", {
@@ -47,14 +43,12 @@ export const DashboardLayout = () => {
     }
   }, [authorizationToken]);
 
-  // Load stats on mount
   useEffect(() => {
     if (authorizationToken) fetchChartStats();
   }, [fetchChartStats, authorizationToken]);
 
   return (
     <div className="min-h-screen flex flex-col sm:flex-row bg-gradient-to-br from-blue-50 to-purple-100">
-
       {/* 🌐 Mobile Top Header */}
       <div className="sm:hidden flex items-center justify-between p-4 bg-gradient-to-r from-purple-50 to-blue-50">
         <div className="flex items-center gap-24">
@@ -71,11 +65,9 @@ export const DashboardLayout = () => {
 
       {/* 📚 Sidebar Menu */}
       <aside
-        className={`fixed sm:static top-14 sm:top-0 left-0 z-40 sm:z-auto bg-blue-800 w-64 sm:min-h-screen shadow-lg border-r p-6 space-y-6 transform ${
-          isSidebarOpen ? "translate-x-0" : "-translate-x-full sm:translate-x-0"
-        } transition-transform duration-300 ease-in-out`}
+        className={`fixed sm:static top-14 sm:top-0 left-0 z-40 sm:z-auto bg-blue-800 w-64 sm:min-h-screen shadow-lg border-r p-6 space-y-6 transform ${isSidebarOpen ? "translate-x-0" : "-translate-x-full sm:translate-x-0"
+          } transition-transform duration-300 ease-in-out`}
       >
-        {/* 🏷 Logo / Title */}
         <NavLink
           to="/dashboard"
           onClick={handleNavClick}
@@ -84,7 +76,6 @@ export const DashboardLayout = () => {
           📊 Dashboard
         </NavLink>
 
-        {/* 📁 Navigation Links */}
         <nav className="space-y-4">
           <NavLink
             to="/dashboard/upload"
@@ -103,10 +94,19 @@ export const DashboardLayout = () => {
             <History size={18} />
             History
           </NavLink>
+
+          <NavLink
+            to="/dashboard/summary"
+            onClick={handleNavClick}
+            className="flex items-center gap-3 px-4 py-2 rounded-md text-white hover:bg-blue-700"
+          >
+            <BrainCircuit size={18} />
+            AI Summary
+          </NavLink>
         </nav>
       </aside>
 
-      {/* 🔳 Mobile Overlay when Sidebar Open */}
+      {/* 🔳 Mobile Overlay */}
       {isSidebarOpen && (
         <div
           className="fixed inset-0 bg-black bg-opacity-40 z-30 sm:hidden"
@@ -118,8 +118,6 @@ export const DashboardLayout = () => {
       <main className="flex-1 p-4 sm:p-8 mt-16 sm:mt-0">
         {isHome ? (
           <div className="p-4 sm:p-10 bg-gradient-to-br from-blue-50 to-purple-100 min-h-screen">
-
-            {/* 👋 Welcome User */}
             <div className="text-center mb-8">
               <h1 className="text-2xl sm:text-3xl font-bold text-purple-700 mb-2">
                 Welcome back, {user?.username || "User"} 👋
@@ -129,7 +127,6 @@ export const DashboardLayout = () => {
               </p>
             </div>
 
-            {/* 📈 Stats Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10 max-w-4xl mx-auto">
               <div className="bg-purple-600 hover:bg-purple-700 text-white rounded-2xl p-6 text-center shadow-md">
                 <h2 className="text-3xl sm:text-4xl font-bold">{chartStats.totalCharts}</h2>
@@ -141,7 +138,6 @@ export const DashboardLayout = () => {
               </div>
             </div>
 
-            {/* 🕓 Recent Files Table */}
             <div className="bg-white max-w-4xl mx-auto p-4 sm:p-6 rounded-2xl shadow-md">
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-4">
                 <h3 className="text-lg sm:text-xl font-bold text-blue-800">Your Recent Files</h3>
