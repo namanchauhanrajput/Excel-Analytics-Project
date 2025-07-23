@@ -15,6 +15,7 @@ import { AdminLayout } from "./components/layouts/Admin-Layout";
 import { AdminUsers } from "./Pages/Admin-Users";
 import { AdminUpdate } from "./Pages/Admin-Update";
 import { AdminCharts } from "./Pages/AdminCharts";
+import { AISummary } from "./Pages/AISummary";
 
 const App = () => {
   return (
@@ -30,6 +31,7 @@ const App = () => {
         <Route path="/dashboard" element={<DashboardLayout />}>
           <Route path="upload" element={<DashboardUpload />} />
           <Route path="history" element={<DashboardHistory />} />
+          <Route path="summary" element={<AISummary />} /> {/* ✅ Fixed */}
           {/* <Route path="chart" element={<DashboardChart />} /> */}
         </Route>
 
