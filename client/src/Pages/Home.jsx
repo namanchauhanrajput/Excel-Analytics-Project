@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 export const Home = () => {
     return (
         <>
@@ -6,18 +8,15 @@ export const Home = () => {
 
                 {/* Sign In button on top-right */}
                 <div className="absolute top-6 right-6">
-                    <a href="/register">
+                    <NavLink to="/register">
                         <button className="bg-white text-purple-700 font-semibold px-5 py-2 rounded-xl shadow hover:bg-purple-100 transition">
                             SignUp
                         </button>
-                    </a>
+                    </NavLink>
                 </div>
 
                 {/* Logo and Heading */}
                 <div className="z-10 max-w-2xl">
-                    {/* Optional logo */}
-                    {/* <img src="/images/logo.png" alt="logo" className="mx-auto mb-4 w-16 h-16" /> */}
-
                     <h1 className="text-5xl md:text-6xl font-extrabold text-white mb-4 drop-shadow">
                         Sheet<span className="text-purple-900">Viz</span>
                     </h1>
@@ -26,11 +25,11 @@ export const Home = () => {
                         Upload and visualize Excel files with interactive charts and smart insights
                     </p>
 
-                    <a href="/login">
+                    <NavLink to="/login">
                         <button className="bg-white text-purple-700 font-bold px-6 py-3 rounded-xl hover:bg-purple-100 transition shadow-lg">
                             Get Started -- Login
                         </button>
-                    </a>
+                    </NavLink>
                 </div>
 
                 {/* Bottom curved white wave */}
