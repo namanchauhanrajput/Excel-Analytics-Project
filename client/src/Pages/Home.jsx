@@ -1,52 +1,101 @@
 import { NavLink } from "react-router-dom";
+import { FaUpload, FaChartBar, FaBolt, FaDatabase, FaShieldAlt, FaChartLine } from "react-icons/fa";
 
 export const Home = () => {
-    return (
-        <>
-            {/* Full screen purple background */}
-            <div className="min-h-screen bg-gradient-to-br from-purple-600 to-purple-300 relative flex flex-col items-center justify-center text-center px-4">
-
-                {/* Sign In button on top-right */}
-                <div className="absolute top-6 right-6">
-                    <NavLink to="/register">
-                        <button className="bg-white text-purple-700 font-semibold px-5 py-2 rounded-xl shadow hover:bg-purple-100 transition">
-                            Sign Up
-                        </button>
-                    </NavLink>
-                </div>
-
-                {/* Logo and Heading */}
-                <div className="z-10 max-w-2xl">
-                    <h1 className="text-5xl md:text-6xl font-extrabold text-white mb-4 drop-shadow">
-                        Sheet<span className="text-purple-900">Viz</span>
-                    </h1>
-
-                    <p className="text-white text-lg md:text-xl mb-8 drop-shadow">
-                        Upload and visualize Excel files with interactive charts and smart insights
-                    </p>
-
-                    <NavLink to="/login">
-                        <button className="bg-white text-purple-700 font-bold px-6 py-3 rounded-xl hover:bg-purple-100 transition shadow-lg">
-                            Get Started -- Login
-                        </button>
-                    </NavLink>
-                </div>
-
-                {/* Bottom curved white wave */}
-                <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-[0]">
-                    <svg
-                        className="relative block w-[calc(100%+1.3px)] h-[350px]"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 1440 320"
-                        preserveAspectRatio="none"
-                    >
-                        <path
-                            fill="#ffffff"
-                            d="M0,224L48,213.3C96,203,192,181,288,176C384,171,480,181,576,197.3C672,213,768,235,864,224C960,213,1056,171,1152,149.3C1248,128,1344,128,1392,128L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
-                        ></path>
-                    </svg>
-                </div>
+  return (
+    <>
+      <div className="min-h-screen bg-gradient-to-r from-pink-200 via-purple-200 to-blue-200 overflow-hidden">
+        {/* Hero Section */}
+        <div className="flex flex-col items-center justify-center text-center pt-24 pb-20 px-4">
+          <div className="mb-6">
+            <div className="w-16 h-16 bg-purple-600 text-white flex items-center justify-center rounded-xl shadow-lg mx-auto mb-6 text-3xl">
+              <FaChartBar />
             </div>
-        </>
-    );
+            <h1 className="text-4xl md:text-6xl font-extrabold text-purple-800 mb-4 leading-tight">
+              Transform Your Excel Data <br /> Into Powerful Visualizations
+            </h1>
+            <p className="text-gray-700 text-lg md:text-xl max-w-2xl mx-auto mb-6">
+              Upload, analyze, and visualize your Excel files with interactive 2D/3D charts. Get AI-powered insights and export beautiful visualizations.
+            </p>
+            <div className="flex flex-col md:flex-row justify-center gap-4">
+              <NavLink to="/login">
+                <button className="bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-purple-700 shadow-md transition">
+                  Start Analyzing →
+                </button>
+              </NavLink>
+              <button className="bg-white text-purple-700 px-6 py-3 rounded-lg font-semibold border border-purple-600 hover:bg-purple-100 shadow-md transition">
+                View Live Demo
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Feature Section */}
+        <div className="bg-white py-16 px-6 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            Powerful Features for Data Analysis
+          </h2>
+          <p className="text-gray-600 mb-10">
+            Everything you need to transform raw data into actionable insights
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {[
+              {
+                icon: <FaUpload />,
+                title: "Smart Upload",
+                desc: "Drag & drop Excel files with intelligent parsing and validation. Supports .xlsx, .xls, and CSV formats.",
+              },
+              {
+                icon: <FaChartBar />,
+                title: "Interactive Charts",
+                desc: "Create stunning 2D/3D visualizations with Chart.js and Three.js. Export as PNG or PDF.",
+              },
+              {
+                icon: <FaBolt />,
+                title: "AI Insights",
+                desc: "Get automated analysis and insights powered by advanced AI. Discover hidden patterns instantly.",
+              },
+              {
+                icon: <FaDatabase />,
+                title: "Data History",
+                desc: "Access your complete analysis history with secure cloud storage. Never lose your insights.",
+              },
+              {
+                icon: <FaShieldAlt />,
+                title: "Enterprise Security",
+                desc: "Bank-level security with JWT authentication and encrypted storage. Your data is always protected.",
+              },
+              {
+                icon: <FaChartLine />,
+                title: "Admin Dashboard",
+                desc: "Comprehensive analytics and user management for organizations. Monitor usage and performance.",
+              },
+            ].map((feature, index) => (
+              <div key={index} className="bg-gray-50 p-6 rounded-xl shadow hover:shadow-lg transition">
+                <div className="text-3xl text-purple-600 mb-4">{feature.icon}</div>
+                <h3 className="text-xl font-semibold mb-2 text-gray-800">{feature.title}</h3>
+                <p className="text-gray-600">{feature.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Call To Action Footer Section */}
+        <div className="bg-gradient-to-r from-purple-600 to-blue-500 py-16 text-center text-white px-6">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            Ready to Transform Your Data?
+          </h2>
+          <p className="text-lg mb-6">
+            Join thousands of professionals who trust our platform for data analysis and visualization.
+          </p>
+          <NavLink to="/register">
+            <button className="bg-white text-purple-700 px-6 py-3 rounded-lg font-semibold hover:bg-purple-100 shadow-md transition">
+              Get Started Free →
+            </button>
+          </NavLink>
+        </div>
+      </div>
+    </>
+  );
 };
