@@ -46,14 +46,20 @@ export const Login = () => {
   };
 
   return (
-    <section
-      className="min-h-screen relative flex flex-col items-center justify-center px-4 py-6 bg-cover bg-center"
-      style={{ backgroundImage: "url('/images/bg-login-blur.png')" }}
-    >
-      {/* Background overlay for gradient and blur */}
-      <div className="absolute inset-0 bg-gradient-to-r from-pink-200 via-purple-200 to-blue-200 opacity-70 backdrop-blur-lg z-0" />
+    <section className="relative min-h-screen flex flex-col items-center justify-center px-4 py-6 overflow-hidden">
+      {/* 🔁 Background Image with Blur */}
+      <div
+        className="absolute inset-0 bg-cover bg-center z-0"
+        style={{
+          backgroundImage: "url('public/images/bg-login-blur.png')",
+          filter: "blur(12px)",
+        }}
+      />
 
-      {/* Back to home */}
+      {/* 🌓 Overlay Gradient */}
+      <div className="absolute inset-0 bg-gradient-to-r from-pink-300 via-purple-200 to-blue-300 opacity-70 z-0" />
+
+      {/* 🔙 Back to Home */}
       <Link
         to="/"
         className="absolute top-4 left-4 text-purple-700 text-sm hover:underline z-10"
@@ -61,25 +67,25 @@ export const Login = () => {
         ← Back to Home
       </Link>
 
-      {/* Logo and Title (outside the card) */}
+      {/* 🧾 Logo + Title */}
       <div className="z-10 text-center mb-6">
         <div className="flex flex-col items-center">
-          <img src="/images/logo.svg" alt="Logo" className="w-12 h-12 mb-2" />
+          <img src="public/images/logo.svg" alt="Logo" className="w-12 h-12 mb-2" />
           <h1 className="text-2xl font-bold text-purple-700">ExcelAnalyzer</h1>
         </div>
-        <p className="text-sm text-gray-700 mt-2">
+        <p className="text-sm text-gray-800 mt-2">
           Powerful Excel analysis and visualization platform
         </p>
       </div>
 
-      {/* Login Card */}
-      <div className="relative z-10 w-full max-w-md bg-white bg-opacity-80 backdrop-blur-xl rounded-2xl shadow-xl px-8 py-10">
+      {/* 🧊 Login Card */}
+      <div className="relative z-10 w-full max-w-md bg-white bg-opacity-30 backdrop-blur-xl rounded-2xl shadow-2xl px-8 py-10">
         <h2 className="text-xl font-bold text-center text-black mb-2">Welcome Back</h2>
-        <p className="text-center text-gray-600 text-sm mb-6">
+        <p className="text-center text-gray-700 text-sm mb-6">
           Sign in to your account or create a new one to get started
         </p>
 
-        {/* Tabs (Sign In / Sign Up) */}
+        {/* Tabs (Visual only) */}
         <div className="flex justify-center mb-6">
           <button className="px-4 py-2 bg-white rounded-l-lg border border-gray-300 text-sm font-medium shadow-inner">
             Sign In
@@ -92,10 +98,11 @@ export const Login = () => {
           </Link>
         </div>
 
+        {/* Login Form */}
         <form onSubmit={handleSubmit} className="space-y-5">
-          {/* Email Input with Icon */}
+          {/* Email Input */}
           <div className="relative">
-            <label className="block text-sm text-gray-700 mb-1">Email</label>
+            <label className="block text-sm text-gray-800 mb-1">Email</label>
             <div className="relative">
               <span className="absolute inset-y-0 left-3 flex items-center text-gray-500">
                 <FaEnvelope size={14} />
@@ -112,9 +119,9 @@ export const Login = () => {
             </div>
           </div>
 
-          {/* Password Input with Icon */}
+          {/* Password Input */}
           <div className="relative">
-            <label className="block text-sm text-gray-700 mb-1">Password</label>
+            <label className="block text-sm text-gray-800 mb-1">Password</label>
             <div className="relative">
               <span className="absolute inset-y-0 left-3 flex items-center text-gray-500">
                 <FaLock size={14} />
@@ -131,7 +138,7 @@ export const Login = () => {
             </div>
           </div>
 
-          {/* Submit Button */}
+          {/* Submit */}
           <button
             type="submit"
             className="w-full py-2 bg-gradient-to-r from-purple-500 to-purple-700 hover:from-purple-600 hover:to-purple-800 text-white font-semibold rounded-lg shadow-md transition"
