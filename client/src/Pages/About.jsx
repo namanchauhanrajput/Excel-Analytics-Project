@@ -18,7 +18,7 @@ export const About = () => {
           </h1>
 
           <p className="text-left text-gray-700 text-base md:text-lg space-y-2">
-            Expertise: Our team consists of experienced IT professionals who are passionate about staying up-to-date
+            Expertise : Our team consists of experienced IT professionals who are passionate about staying up-to-date
             with the latest industry trends. <br />
             Customization: We understand that every business is unique. That’s why we create solutions that are
             tailored to your specific needs and goals. <br />
