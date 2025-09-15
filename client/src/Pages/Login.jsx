@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../store/auth";
 import { toast } from "react-toastify";
+import { FaEnvelope, FaLock } from "react-icons/fa";
 
 export const Login = () => {
   const [user, setUser] = useState({
@@ -46,11 +47,11 @@ export const Login = () => {
 
   return (
     <section
-      className="min-h-screen relative flex items-center justify-center px-4 py-6 bg-cover bg-center"
+      className="min-h-screen relative flex flex-col items-center justify-center px-4 py-6 bg-cover bg-center"
       style={{ backgroundImage: "url('/images/bg-login-blur.png')" }}
     >
-      {/* Overlay gradient for soft blur effect */}
-      <div className="absolute inset-0 bg-gradient-to-r from-pink-200 via-purple-200 to-blue-200 opacity-70 backdrop-blur-md z-0" />
+      {/* Background overlay for gradient and blur */}
+      <div className="absolute inset-0 bg-gradient-to-r from-pink-200 via-purple-200 to-blue-200 opacity-70 backdrop-blur-lg z-0" />
 
       {/* Back to home */}
       <Link
@@ -60,22 +61,25 @@ export const Login = () => {
         ← Back to Home
       </Link>
 
-      {/* Card */}
-      <div className="relative z-10 w-full max-w-md bg-white bg-opacity-70 backdrop-blur-lg rounded-2xl shadow-xl px-8 py-10">
+      {/* Logo and Title (outside the card) */}
+      <div className="z-10 text-center mb-6">
         <div className="flex flex-col items-center">
           <img src="/images/logo.svg" alt="Logo" className="w-12 h-12 mb-2" />
-          <h1 className="text-2xl font-bold text-purple-700 mb-1">ExcelAnalyzer</h1>
-          <p className="text-sm text-gray-600 text-center mb-6">
-            Powerful Excel analysis and visualization platform
-          </p>
+          <h1 className="text-2xl font-bold text-purple-700">ExcelAnalyzer</h1>
         </div>
+        <p className="text-sm text-gray-700 mt-2">
+          Powerful Excel analysis and visualization platform
+        </p>
+      </div>
 
-        <h2 className="text-xl font-semibold text-center text-black mb-4">Welcome Back</h2>
+      {/* Login Card */}
+      <div className="relative z-10 w-full max-w-md bg-white bg-opacity-80 backdrop-blur-xl rounded-2xl shadow-xl px-8 py-10">
+        <h2 className="text-xl font-bold text-center text-black mb-2">Welcome Back</h2>
         <p className="text-center text-gray-600 text-sm mb-6">
           Sign in to your account or create a new one to get started
         </p>
 
-        {/* Tabs (just visuals) */}
+        {/* Tabs (Sign In / Sign Up) */}
         <div className="flex justify-center mb-6">
           <button className="px-4 py-2 bg-white rounded-l-lg border border-gray-300 text-sm font-medium shadow-inner">
             Sign In
@@ -89,32 +93,45 @@ export const Login = () => {
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-5">
-          <div>
+          {/* Email Input with Icon */}
+          <div className="relative">
             <label className="block text-sm text-gray-700 mb-1">Email</label>
-            <input
-              type="email"
-              name="email"
-              value={user.email}
-              onChange={handleInput}
-              placeholder="Enter your email address"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg bg-white bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-purple-400"
-              required
-            />
+            <div className="relative">
+              <span className="absolute inset-y-0 left-3 flex items-center text-gray-500">
+                <FaEnvelope size={14} />
+              </span>
+              <input
+                type="email"
+                name="email"
+                value={user.email}
+                onChange={handleInput}
+                placeholder="Enter your email address"
+                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg bg-white bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-purple-400"
+                required
+              />
+            </div>
           </div>
 
-          <div>
+          {/* Password Input with Icon */}
+          <div className="relative">
             <label className="block text-sm text-gray-700 mb-1">Password</label>
-            <input
-              type="password"
-              name="password"
-              value={user.password}
-              onChange={handleInput}
-              placeholder="Enter your password"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg bg-white bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-purple-400"
-              required
-            />
+            <div className="relative">
+              <span className="absolute inset-y-0 left-3 flex items-center text-gray-500">
+                <FaLock size={14} />
+              </span>
+              <input
+                type="password"
+                name="password"
+                value={user.password}
+                onChange={handleInput}
+                placeholder="Enter your password"
+                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg bg-white bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-purple-400"
+                required
+              />
+            </div>
           </div>
 
+          {/* Submit Button */}
           <button
             type="submit"
             className="w-full py-2 bg-gradient-to-r from-purple-500 to-purple-700 hover:from-purple-600 hover:to-purple-800 text-white font-semibold rounded-lg shadow-md transition"
