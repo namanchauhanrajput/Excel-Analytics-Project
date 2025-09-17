@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Navbar } from "./components/Navbar";
-import { Footer } from "./components/footer";
+// import { Footer } from "./components/footer";
 import { Home } from "./Pages/Home";
 // import { Contact } from "./Pages/Contact";
 import { Register } from "./Pages/Register";
@@ -42,7 +42,7 @@ const App = () => {
           <Route path="charts" element={<AdminCharts />} />
         </Route>
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </BrowserRouter>
   );
 };

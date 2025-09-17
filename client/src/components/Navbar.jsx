@@ -38,7 +38,7 @@ export const Navbar = () => {
         <ul className="hidden md:flex items-center space-x-6 text-lg">
           <li>
             <NavLink to="/" className="text-gray-700 hover:text-purple-700">
-              Homing
+              Home
             </NavLink>
           </li>
 
