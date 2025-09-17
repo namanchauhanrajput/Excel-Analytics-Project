@@ -3,12 +3,15 @@ import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../store/auth";
 import { toast } from "react-toastify";
 import { FaEnvelope, FaLock } from "react-icons/fa";
+import { AiOutlineBarChart } from "react-icons/ai"; // ✅ New Icon for Logo
+import { motion } from "framer-motion";
 
 export const Login = () => {
   const [user, setUser] = useState({
     email: "",
     password: "",
   });
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
   const { storeTokenInLS } = useAuth();
@@ -20,9 +23,10 @@ export const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     try {
-      const response = await fetch("https://excel-analytics-project.onrender.com/api/auth/login", {
+      const response = await fetch("https://excel-analytics-project.onrender.com/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -42,11 +46,21 @@ export const Login = () => {
       }
     } catch (error) {
       console.error("Login error:", error);
+      toast.error("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
     }
   };
 
+  // Animation Variants
+  const fadeUp = {
+    hidden: { opacity: 0, y: 60 },
+    visible: { opacity: 1, y: 0 },
+  };
+
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center px-4 py-6 overflow-hidden">
+    <>
+    <section className="relative  flex flex-col items-center justify-center px-4 py-6 overflow-hidden">
       {/* 🔁 Background Image with Blur */}
       <div
         className="absolute inset-0 bg-cover bg-center z-0"
@@ -68,24 +82,43 @@ export const Login = () => {
       </Link>
 
       {/* 🧾 Logo + Title */}
-      <div className="z-10 text-center mb-6">
-        <div className="flex flex-col items-center">
-          <img src="public/images/logo.svg" alt="Logo" className="w-12 h-12 mb-2" />
-          <h1 className="text-2xl font-bold text-purple-700">ExcelAnalyzer</h1>
+      <motion.div
+        className="z-10 text-center mb-6 "
+        variants={fadeUp}
+        initial="hidden"
+        animate="visible"
+        transition={{ duration: 0.8, delay: 0.2 }}
+      >
+        <div className="flex flex-col items-center ">
+          <div className="flex items-center gap-2 mt-8 sm:mt-0">
+            {/* ✅ Icon with Title */}
+            <AiOutlineBarChart className="text-purple-700 text-3xl" />
+            <h1 className="text-2xl font-bold text-purple-700">
+              ExcelAnalyzer
+            </h1>
+          </div>
+          <p className="text-sm text-gray-800">
+            Powerful Excel analysis and visualization platform
+          </p>
         </div>
-        <p className="text-sm text-gray-800 mt-2">
-          Powerful Excel analysis and visualization platform
-        </p>
-      </div>
+      </motion.div>
 
       {/* 🧊 Login Card */}
-      <div className="relative z-10 w-full max-w-md bg-white bg-opacity-30 backdrop-blur-xl rounded-2xl shadow-2xl px-8 py-10">
-        <h2 className="text-xl font-bold text-center text-black mb-2">Welcome Back</h2>
+      <motion.div
+        className="relative z-10 w-full max-w-md bg-white bg-opacity-30 backdrop-blur-xl rounded-2xl shadow-2xl px-8 py-10 mb-16"
+        variants={fadeUp}
+        initial="hidden"
+        animate="visible"
+        transition={{ duration: 0.8, delay: 0.4 }}
+      >
+        <h2 className="text-xl font-bold text-center text-black mb-2">
+          Welcome Back
+        </h2>
         <p className="text-center text-gray-700 text-sm mb-6">
           Sign in to your account or create a new one to get started
         </p>
 
-        {/* Tabs (Visual only) */}
+        {/* Tabs */}
         <div className="flex justify-center mb-6">
           <button className="px-4 py-2 bg-white rounded-l-lg border border-gray-300 text-sm font-medium shadow-inner">
             Sign In
@@ -138,15 +171,30 @@ export const Login = () => {
             </div>
           </div>
 
-          {/* Submit */}
+          {/* Submit with Loader */}
           <button
             type="submit"
-            className="w-full py-2 bg-gradient-to-r from-purple-500 to-purple-700 hover:from-purple-600 hover:to-purple-800 text-white font-semibold rounded-lg shadow-md transition"
+            disabled={loading}
+            className={`w-full py-2 flex items-center justify-center bg-gradient-to-r from-purple-500 to-purple-700 text-white font-semibold rounded-lg shadow-md transition ${
+              loading
+                ? "opacity-70 cursor-not-allowed"
+                : "hover:from-purple-600 hover:to-purple-800"
+            }`}
           >
-            Sign In to Dashboard
+            {loading ? (
+              <motion.div
+                className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"
+                initial={{ rotate: 0 }}
+                animate={{ rotate: 360 }}
+                transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
+              />
+            ) : (
+              "Sign In to Dashboard"
+            )}
           </button>
         </form>
-      </div>
+      </motion.div>
     </section>
+    </>
   );
 };

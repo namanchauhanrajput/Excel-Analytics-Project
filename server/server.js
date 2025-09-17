@@ -20,7 +20,7 @@ require("dotenv").config();  // 🔐 Load .env configuration (like PORT, DB_URL)
 // CORS Setup
 // -----------------------------
 const corsOptions = {
-  origin: "https://excel-analytics-project-1.onrender.com",      // 🌐 Allow frontend (React) to access backend
+  origin: ["https://excel-analytics-project-1.onrender.com", "http://localhost:3000"],   // 🌐 Allow frontend (React) to access backend
   methods: "GET, POST, DELETE, PUT, PATCH, HEAD",  // ✅ Allowed HTTP Methods
   credentials: true,                    // 🔐 Allow cookies & headers like Authorization
 };
