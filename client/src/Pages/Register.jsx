@@ -66,7 +66,7 @@ export const Register = () => {
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
         <div className="flex flex-col items-center">
-          <div className="flex items-center gap-2 mb-2">
+          <div className="flex items-center gap-2 mb-1">
             <FaChartBar className="text-purple-700 text-3xl" />
             <h1 className="text-3xl font-bold text-purple-700">
               ExcelAnalyzer

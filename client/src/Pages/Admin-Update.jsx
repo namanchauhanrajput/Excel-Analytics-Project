@@ -70,7 +70,7 @@ export const AdminUpdate = () => {
   // ✅ JSX layout
   return (
     <section className="max-w-2xl mx-auto mt-10 p-6 bg-white rounded-lg shadow-md">
-      <h2 className="text-2xl font-semibold mb-6 text-center">✏️ Update User Info</h2>
+      <h2 className="text-2xl font-semibold mb-6 text-center"> Update User Info</h2>
 
       <form onSubmit={handleSubmit} className="space-y-4">
         {/* Username */}
