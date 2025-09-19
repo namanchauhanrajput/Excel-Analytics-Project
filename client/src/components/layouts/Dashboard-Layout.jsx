@@ -5,7 +5,7 @@ import { useEffect, useState, useCallback } from "react";
 import axios from "axios";
 
 export const DashboardLayout = () => {
-  const { user, authorizationToken } = useAuth();
+  const { authorizationToken } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -14,6 +14,7 @@ export const DashboardLayout = () => {
     totalCharts: 0,
     chartTypes: new Set(),
     recentCharts: [],
+    avgSessionTime: 0,
   });
 
   const isHome = location.pathname === "/dashboard";
@@ -32,14 +33,32 @@ export const DashboardLayout = () => {
         }
       );
 
-      const charts = res.data;
+      const charts = res.data || [];
+
+      // unique chart types
       const types = new Set(charts.map((chart) => chart.type));
+
+      // recent 5 charts
       const recent = charts.slice(0, 5);
+
+      // Rough average session time = avg time since created
+      const avgSessionTime =
+        charts.length > 0
+          ? (
+              charts.reduce((acc, chart) => {
+                const createdAt = new Date(chart.createdAt);
+                const diffHours =
+                  (Date.now() - createdAt.getTime()) / (1000 * 60 * 60);
+                return acc + diffHours;
+              }, 0) / charts.length
+            ).toFixed(1)
+          : 0;
 
       setChartStats({
         totalCharts: charts.length,
         chartTypes: types,
         recentCharts: recent,
+        avgSessionTime,
       });
     } catch (err) {
       console.error("Error fetching stats", err);
@@ -54,7 +73,7 @@ export const DashboardLayout = () => {
     <div className="h-screen flex bg-gray-50 overflow-hidden">
       {/* 🌐 Sidebar */}
       <aside
-        className={`fixed sm:static top-0 left-0 z-40 sm:z-auto bg-blue-800 w-64 sm:min-h-screen shadow-lg border-r p-6 space-y-6 transform ${
+        className={`fixed sm:static top-0 left-0 z-40 sm:z-auto bg-indigo-600 w-64 sm:min-h-screen shadow-lg border-r p-6 space-y-6 transform ${
           isSidebarOpen
             ? "translate-x-0"
             : "-translate-x-full sm:translate-x-0"
@@ -72,7 +91,7 @@ export const DashboardLayout = () => {
           <NavLink
             to="/dashboard/upload"
             onClick={handleNavClick}
-            className="flex items-center gap-3 px-4 py-2 rounded-md text-white hover:bg-blue-700"
+            className="flex items-center gap-3 px-4 py-2 rounded-md text-white hover:bg-indigo-700"
           >
             <FileUp size={18} />
             Upload
@@ -81,7 +100,7 @@ export const DashboardLayout = () => {
           <NavLink
             to="/dashboard/history"
             onClick={handleNavClick}
-            className="flex items-center gap-3 px-4 py-2 rounded-md text-white hover:bg-blue-700"
+            className="flex items-center gap-3 px-4 py-2 rounded-md text-white hover:bg-indigo-700"
           >
             <History size={18} />
             History
@@ -90,7 +109,7 @@ export const DashboardLayout = () => {
           <NavLink
             to="/dashboard/summary"
             onClick={handleNavClick}
-            className="flex items-center gap-3 px-4 py-2 rounded-md text-white hover:bg-blue-700"
+            className="flex items-center gap-3 px-4 py-2 rounded-md text-white hover:bg-indigo-700"
           >
             <BrainCircuit size={18} />
             AI Summary
@@ -128,30 +147,28 @@ export const DashboardLayout = () => {
             {/* Stats Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
               <div className="bg-white rounded-xl p-6 text-center shadow border">
-                <h2 className="text-3xl font-bold text-gray-900">24</h2>
+                <h2 className="text-3xl font-bold text-gray-900">
+                  {chartStats.totalCharts}
+                </h2>
                 <p className="text-gray-600">Total Files</p>
-                <span className="text-sm text-green-600">+2 from last week</span>
               </div>
               <div className="bg-white rounded-xl p-6 text-center shadow border">
-                <h2 className="text-3xl font-bold text-gray-900">156</h2>
+                <h2 className="text-3xl font-bold text-gray-900">
+                  {chartStats.totalCharts}
+                </h2>
                 <p className="text-gray-600">Charts Created</p>
-                <span className="text-sm text-green-600">
-                  +12% from last month
-                </span>
               </div>
               <div className="bg-white rounded-xl p-6 text-center shadow border">
-                <h2 className="text-3xl font-bold text-gray-900">2.4h</h2>
-                <p className="text-gray-600">Analysis Time</p>
-                <span className="text-sm text-gray-500">
-                  Average per session
-                </span>
+                <h2 className="text-3xl font-bold text-gray-900">
+                  {chartStats.avgSessionTime}h
+                </h2>
+                <p className="text-gray-600">Avg Session Time</p>
               </div>
               <div className="bg-white rounded-xl p-6 text-center shadow border">
-                <h2 className="text-3xl font-bold text-gray-900">8</h2>
-                <p className="text-gray-600">Team Members</p>
-                <span className="text-sm text-green-600">
-                  +1 new this month
-                </span>
+                <h2 className="text-3xl font-bold text-gray-900">
+                  {chartStats.chartTypes.size}
+                </h2>
+                <p className="text-gray-600">Unique Chart Types</p>
               </div>
             </div>
 
