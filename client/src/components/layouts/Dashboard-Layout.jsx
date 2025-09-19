@@ -51,7 +51,7 @@ export const DashboardLayout = () => {
   }, [fetchChartStats, authorizationToken]);
 
   return (
-    <div className="h-screen flex bg-gradient-to-br from-blue-50 to-purple-100 overflow-hidden">
+    <div className="h-screen flex bg-gray-50 overflow-hidden">
       {/* 🌐 Sidebar */}
       <aside
         className={`fixed sm:static top-0 left-0 z-40 sm:z-auto bg-blue-800 w-64 sm:min-h-screen shadow-lg border-r p-6 space-y-6 transform ${
@@ -115,44 +115,82 @@ export const DashboardLayout = () => {
       {/* 📦 Main Content */}
       <main className="flex-1 overflow-y-auto p-4 sm:p-8 sm:ml-0 mt-14 sm:mt-0">
         {isHome ? (
-          <div className="p-4 sm:p-10 bg-gradient-to-br from-blue-50 to-purple-100 min-h-full">
-            <div className="text-center mb-8">
-              <h1 className="text-2xl sm:text-3xl font-bold text-purple-700 mb-2">
-                Welcome back, {user?.username || "User"} 👋
-              </h1>
-              <p className="text-gray-600 text-base sm:text-lg">
-                Manage your Excel visualizations and create new insights
+          <div className="p-4 sm:p-10 bg-white min-h-full rounded-lg shadow-sm">
+            {/* Welcome Section */}
+            <div className="text-left mb-8">
+              <h1 className="text-3xl font-bold text-gray-800">Dashboard</h1>
+              <p className="text-gray-600">
+                Welcome back! Here’s an overview of your Excel analysis
+                activities.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10 max-w-4xl mx-auto">
-              <div className="bg-purple-600 hover:bg-purple-700 text-white rounded-2xl p-6 text-center shadow-md">
-                <h2 className="text-3xl sm:text-4xl font-bold">
-                  {chartStats.totalCharts}
-                </h2>
-                <p className="text-base sm:text-lg">Uploaded Files</p>
+            {/* Stats Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+              <div className="bg-white rounded-xl p-6 text-center shadow border">
+                <h2 className="text-3xl font-bold text-gray-900">24</h2>
+                <p className="text-gray-600">Total Files</p>
+                <span className="text-sm text-green-600">+2 from last week</span>
               </div>
-              <div className="bg-blue-600 hover:bg-blue-700 text-white rounded-2xl p-6 text-center shadow-md">
-                <h2 className="text-3xl sm:text-4xl font-bold">
-                  {chartStats.chartTypes.size}
-                </h2>
-                <p className="text-base sm:text-lg">Different Chart Types</p>
+              <div className="bg-white rounded-xl p-6 text-center shadow border">
+                <h2 className="text-3xl font-bold text-gray-900">156</h2>
+                <p className="text-gray-600">Charts Created</p>
+                <span className="text-sm text-green-600">
+                  +12% from last month
+                </span>
+              </div>
+              <div className="bg-white rounded-xl p-6 text-center shadow border">
+                <h2 className="text-3xl font-bold text-gray-900">2.4h</h2>
+                <p className="text-gray-600">Analysis Time</p>
+                <span className="text-sm text-gray-500">
+                  Average per session
+                </span>
+              </div>
+              <div className="bg-white rounded-xl p-6 text-center shadow border">
+                <h2 className="text-3xl font-bold text-gray-900">8</h2>
+                <p className="text-gray-600">Team Members</p>
+                <span className="text-sm text-green-600">
+                  +1 new this month
+                </span>
               </div>
             </div>
 
-            <div className="bg-white max-w-4xl mx-auto p-4 sm:p-6 rounded-2xl shadow-md">
-              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-4">
-                <h3 className="text-lg sm:text-xl font-bold text-blue-800">
-                  Your Recent Files
-                </h3>
+            {/* Quick Upload & Visualization */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10">
+              <div className="bg-white border rounded-xl p-6 shadow text-center">
+                <h3 className="text-lg font-semibold mb-2">Quick Upload</h3>
+                <p className="text-gray-500 mb-4">
+                  Upload a new Excel file to start analyzing your data
+                </p>
                 <button
                   onClick={() => navigate("/dashboard/upload")}
-                  className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-md shadow-md hover:from-blue-700 hover:to-purple-700"
+                  className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-2 rounded-md shadow hover:from-purple-700 hover:to-blue-700"
                 >
-                  + Upload File
+                  Upload New File
                 </button>
               </div>
 
+              <div className="bg-white border rounded-xl p-6 shadow text-center">
+                <h3 className="text-lg font-semibold mb-2">
+                  Create Visualization
+                </h3>
+                <p className="text-gray-500 mb-4">
+                  Generate interactive charts from your uploaded data
+                </p>
+                <button
+                  onClick={() => navigate("/dashboard/history")}
+                  className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-md shadow hover:from-blue-700 hover:to-purple-700"
+                >
+                  Start Visualizing
+                </button>
+              </div>
+            </div>
+
+            {/* Recent Activity */}
+            <div className="bg-white border rounded-xl p-6 shadow">
+              <h3 className="text-lg font-bold text-gray-800 mb-4">
+                Recent Activity
+              </h3>
               {chartStats.recentCharts.length === 0 ? (
                 <div className="text-gray-500 text-center py-8">
                   <p>No Files Found</p>
@@ -164,7 +202,7 @@ export const DashboardLayout = () => {
               ) : (
                 <div className="overflow-x-auto">
                   <table className="w-full text-sm border rounded overflow-hidden">
-                    <thead className="bg-blue-100">
+                    <thead className="bg-gray-100">
                       <tr>
                         <th className="p-2 border">Title</th>
                         <th className="p-2 border">Type</th>
