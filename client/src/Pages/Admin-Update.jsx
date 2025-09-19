@@ -14,18 +14,21 @@ export const AdminUpdate = () => {
     phone: "",
     role: "",
   });
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false); // for page load
+  const [updating, setUpdating] = useState(false); // for update button
 
   useEffect(() => {
     if (!id || !authorizationToken) return;
     const getUser = async () => {
       setLoading(true);
       try {
-        const res = await fetch(`https://excel-analytics-project.onrender.com/api/admin/users/${id}`, {
-          headers: { Authorization: authorizationToken },
-        });
+        const res = await fetch(
+          `https://excel-analytics-project.onrender.com/api/admin/users/${id}`,
+          {
+            headers: { Authorization: authorizationToken },
+          }
+        );
         const json = await res.json();
-        // backend may return user in .data or directly
         const payload = json?.data ?? json;
         setUserData({
           username: payload?.username ?? "",
@@ -35,6 +38,7 @@ export const AdminUpdate = () => {
         });
       } catch (err) {
         console.error(err);
+        toast.error("Failed to load user");
       } finally {
         setLoading(false);
       }
@@ -42,7 +46,8 @@ export const AdminUpdate = () => {
     getUser();
   }, [id, authorizationToken]);
 
-  const handleChange = (e) => setUserData((s) => ({ ...s, [e.target.name]: e.target.value }));
+  const handleChange = (e) =>
+    setUserData((s) => ({ ...s, [e.target.name]: e.target.value }));
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -50,12 +55,19 @@ export const AdminUpdate = () => {
       toast.error("Not authorized");
       return;
     }
+    setUpdating(true);
     try {
-      const res = await fetch(`https://excel-analytics-project.onrender.com/api/admin/users/update/${id}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json", Authorization: authorizationToken },
-        body: JSON.stringify(userData),
-      });
+      const res = await fetch(
+        `https://excel-analytics-project.onrender.com/api/admin/users/update/${id}`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: authorizationToken,
+          },
+          body: JSON.stringify(userData),
+        }
+      );
       if (res.ok) {
         toast.success("User updated");
         navigate("/admin/users");
@@ -65,6 +77,8 @@ export const AdminUpdate = () => {
     } catch (err) {
       console.error(err);
       toast.error("Update error");
+    } finally {
+      setUpdating(false);
     }
   };
 
@@ -99,16 +113,48 @@ export const AdminUpdate = () => {
           className="w-full px-4 py-2 border rounded"
         />
 
-        <select name="role" value={userData.role} onChange={handleChange} className="w-full px-4 py-2 border rounded">
+        <select
+          name="role"
+          value={userData.role}
+          onChange={handleChange}
+          className="w-full px-4 py-2 border rounded"
+        >
           <option value="">Select role</option>
           <option value="admin">Admin</option>
-          <option value="moderator">Moderator</option>
           <option value="user">User</option>
         </select>
 
         <div className="flex justify-center">
-          <button type="submit" className="w-full sm:w-52 bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-2 rounded-full">
-            Update
+          <button
+            type="submit"
+            disabled={updating}
+            className={`w-full sm:w-52 flex items-center justify-center gap-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-2 rounded-full ${
+              updating ? "opacity-70 cursor-not-allowed" : ""
+            }`}
+          >
+            {updating && (
+              <svg
+                className="animate-spin h-5 w-5 text-white"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <circle
+                  className="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  strokeWidth="4"
+                ></circle>
+                <path
+                  className="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                ></path>
+              </svg>
+            )}
+            {updating ? "Updating..." : "Update"}
           </button>
         </div>
       </form>
