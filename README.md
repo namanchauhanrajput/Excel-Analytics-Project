@@ -96,15 +96,15 @@ excel-analytics-platform/
 │   │   ├── pages/        # Page components (DashboardUpload, DashboardHistory, Login, Register, etc.)
 │   │   ├── context/      # React context for auth, theme, etc.
 │   │   ├── utils/        # Helper functions (API calls, data formatting, etc.)
-│   │   ├── App.jsx        # Main App component with routing
-│   │   └── index.jsx      # Entry point
+│   │   ├── App.jsx       # Main App component with routing
+│   │   └── index.jsx     # Entry point
 ├── server/               # Express backend
 │   ├── controllers/      # Business logic for routes (auth, charts, users)
 │   ├── models/           # Mongoose models (User, Chart, File)
 │   ├── routes/           # Express routes (authRoutes, chartRoutes, userRoutes)
 │   ├── middlewares/      # Middleware (auth, error handling, file upload)
 │   ├── config/           # Config files (DB connection, OpenAI, Cloudinary)
-│   └── server.js          # Entry point for backend server
+│   └── server.js         # Entry point for backend server
 ├── .env                  # Environment variables
 ├── package.json           # Project dependencies and scripts
-└── README.md              # Project documentation
+└── README.md             # Project documentation
