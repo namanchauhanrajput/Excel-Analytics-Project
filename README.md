@@ -1,8 +1,5 @@
 # 📊 Excel Analytics Platform (MERN Stack)
 
-![Banner](https://via.placeholder.com/1200x300.png?text=Excel+Analytics+Platform)  
-*(👉 Replace this with your custom banner image)*
-
 <p align="center">
   <a href="https://github.com/namanchauhanrajput/Excel-Analytics-Project/stargazers">
     <img src="https://img.shields.io/github/stars/namanchauhanrajput/Excel-Analytics-Project?style=for-the-badge&logo=github" alt="GitHub stars"/>
