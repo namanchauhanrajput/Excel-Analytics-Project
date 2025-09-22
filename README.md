@@ -4,14 +4,14 @@
 *(👉 Replace this with your custom banner image)*
 
 <p align="center">
-  <a href="https://github.com/namanchauhanrajput/excel-analytics-platform/stargazers">
-    <img src="https://img.shields.io/github/stars/namanchauhanrajput/excel-analytics-platform?style=for-the-badge&logo=github" alt="GitHub stars"/>
+  <a href="https://github.com/namanchauhanrajput/Excel-Analytics-Project/stargazers">
+    <img src="https://img.shields.io/github/stars/namanchauhanrajput/Excel-Analytics-Project?style=for-the-badge&logo=github" alt="GitHub stars"/>
   </a>
-  <a href="https://github.com/namanchauhanrajput/excel-analytics-platform/network/members">
-    <img src="https://img.shields.io/github/forks/namanchauhanrajput/excel-analytics-platform?style=for-the-badge&logo=github" alt="GitHub forks"/>
+  <a href="https://github.com/namanchauhanrajput/Excel-Analytics-Project/network/members">
+    <img src="https://img.shields.io/github/forks/namanchauhanrajput/Excel-Analytics-Project?style=for-the-badge&logo=github" alt="GitHub forks"/>
   </a>
-  <a href="https://github.com/namanchauhanrajput/excel-analytics-platform/graphs/contributors">
-    <img src="https://img.shields.io/github/contributors/namanchauhanrajput/excel-analytics-platform?style=for-the-badge" alt="Contributors"/>
+  <a href="https://github.com/namanchauhanrajput/Excel-Analytics-Project/graphs/contributors">
+    <img src="https://img.shields.io/github/contributors/namanchauhanrajput/Excel-Analytics-Project?style=for-the-badge" alt="Contributors"/>
   </a>
 </p>
 
