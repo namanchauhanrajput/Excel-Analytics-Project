@@ -4,14 +4,14 @@
 *(👉 Replace this with your custom banner image)*
 
 <p align="center">
-  <a href="https://github.com/your-username/excel-analytics-platform/stargazers">
-    <img src="https://img.shields.io/github/stars/your-username/excel-analytics-platform?style=for-the-badge&logo=github" alt="GitHub stars"/>
+  <a href="https://github.com/namanchauhanrajput/excel-analytics-platform/stargazers">
+    <img src="https://img.shields.io/github/stars/namanchauhanrajput/excel-analytics-platform?style=for-the-badge&logo=github" alt="GitHub stars"/>
   </a>
-  <a href="https://github.com/your-username/excel-analytics-platform/network/members">
-    <img src="https://img.shields.io/github/forks/your-username/excel-analytics-platform?style=for-the-badge&logo=github" alt="GitHub forks"/>
+  <a href="https://github.com/namanchauhanrajput/excel-analytics-platform/network/members">
+    <img src="https://img.shields.io/github/forks/namanchauhanrajput/excel-analytics-platform?style=for-the-badge&logo=github" alt="GitHub forks"/>
   </a>
-  <a href="https://github.com/your-username/excel-analytics-platform/blob/main/LICENSE">
-    <img src="https://img.shields.io/github/license/your-username/excel-analytics-platform?style=for-the-badge" alt="License"/>
+  <a href="https://github.com/namanchauhanrajput/excel-analytics-platform/graphs/contributors">
+    <img src="https://img.shields.io/github/contributors/namanchauhanrajput/excel-analytics-platform?style=for-the-badge" alt="Contributors"/>
   </a>
 </p>
 
@@ -86,3 +86,25 @@ Includes **JWT authentication, user dashboard, and admin controls**.
 ---
 
 ## 📂 Folder Structure
+
+```bash
+excel-analytics-platform/
+├── client/               # React frontend
+│   ├── public/           # Static files
+│   ├── src/
+│   │   ├── components/   # Reusable React components (Navbar, ChartComponent, Dashboard, etc.)
+│   │   ├── pages/        # Page components (DashboardUpload, DashboardHistory, Login, Register, etc.)
+│   │   ├── context/      # React context for auth, theme, etc.
+│   │   ├── utils/        # Helper functions (API calls, data formatting, etc.)
+│   │   ├── App.jsx        # Main App component with routing
+│   │   └── index.jsx      # Entry point
+├── server/               # Express backend
+│   ├── controllers/      # Business logic for routes (auth, charts, users)
+│   ├── models/           # Mongoose models (User, Chart, File)
+│   ├── routes/           # Express routes (authRoutes, chartRoutes, userRoutes)
+│   ├── middlewares/      # Middleware (auth, error handling, file upload)
+│   ├── config/           # Config files (DB connection, OpenAI, Cloudinary)
+│   └── server.js          # Entry point for backend server
+├── .env                  # Environment variables
+├── package.json           # Project dependencies and scripts
+└── README.md              # Project documentation
