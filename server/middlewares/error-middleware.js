@@ -1,4 +1,4 @@
-// ✅ Global error handling middleware
+// Global error handling middleware
 const errorMiddleware = (err, req, res, next) => {
   // 🔍 Use custom error status if provided, else fallback to 500 (server error)
   const status = err.status || 500;
