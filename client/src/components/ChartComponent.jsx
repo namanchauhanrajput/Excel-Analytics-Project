@@ -1,5 +1,3 @@
-// src/components/ChartComponent.jsx
-
 // Import necessary components and elements from Chart.js
 import {
   Chart as ChartJS,
