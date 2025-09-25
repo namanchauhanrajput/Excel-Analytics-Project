@@ -29,7 +29,7 @@ const register = async (req, res) => {
 };
 
 // --------------------------------------------
-// ✅ Login Controller (POST /api/auth/login)
+// Login Controller (POST /api/auth/login)
 // --------------------------------------------
 const login = async (req, res) => {
   try {
@@ -41,7 +41,7 @@ const login = async (req, res) => {
       return res.status(400).json({ message: "Invalid Credentials" }); // ❌ If no user found
     }
 
-    // ✅ NOTE: This is plain text password comparison (not secure for production)
+    //  NOTE: This is plain text password comparison (not secure for production)
     if (password === userExist.password) {
       const token = userExist.generateToken(); // 🔐 Generate token
 
@@ -60,9 +60,9 @@ const login = async (req, res) => {
 };
 
 // --------------------------------------------
-// ✅ Get User Controller (GET /api/auth/user)
+//  Get User Controller (GET /api/auth/user)
 // --------------------------------------------
-// 👉 Returns user data from verified JWT (authMiddleware puts it in req.user)
+//  Returns user data from verified JWT (authMiddleware puts it in req.user)
 
 const user = async (req, res) => {
   try {
