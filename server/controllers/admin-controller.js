@@ -1,7 +1,7 @@
 const User = require("../models/user-model"); // 👤 User model from MongoDB
 
 // --------------------------------------------
-// ✅ Get All Users (GET /api/admin/users)
+//  Get All Users (GET /api/admin/users)
 // --------------------------------------------
 const getAllUsers = async (req, res, next) => {
   try {
@@ -10,17 +10,17 @@ const getAllUsers = async (req, res, next) => {
     console.log(users); // 🧪 Debug log (optional)
 
     if (!users || users.length === 0) {
-      return res.status(404).json({ message: "No Users Found" }); // ❌ No users case
+      return res.status(404).json({ message: "No Users Found" }); //  No users case
     }
 
-    return res.status(200).json(users); // ✅ Return all users
+    return res.status(200).json(users); //  Return all users
   } catch (error) {
-    next(error); // ❌ Pass error to global error handler
+    next(error); //  Pass error to global error handler
   }
 };
 
 // --------------------------------------------
-// ✅ Get Single User by ID (GET /api/admin/users/:id)
+//  Get Single User by ID (GET /api/admin/users/:id)
 // --------------------------------------------
 const getUserById = async (req, res, next) => {
   try {
