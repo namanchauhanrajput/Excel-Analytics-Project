@@ -3,7 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../store/auth";
 import { toast } from "react-toastify";
 import { FaEnvelope, FaLock } from "react-icons/fa";
-import { AiOutlineBarChart } from "react-icons/ai"; // ✅ New Icon for Logo
+import { AiOutlineBarChart } from "react-icons/ai"; //New Icon for Logo
 import { motion } from "framer-motion";
 
 export const Login = () => {
@@ -61,7 +61,7 @@ export const Login = () => {
   return (
     <>
     <section className="relative  flex flex-col items-center justify-center px-4 py-6 overflow-hidden">
-      {/* 🔁 Background Image with Blur */}
+      {/*  Background Image with Blur */}
       <div
         className="absolute inset-0 bg-cover bg-center z-0"
         style={{
@@ -70,10 +70,10 @@ export const Login = () => {
         }}
       />
 
-      {/* 🌓 Overlay Gradient */}
+      {/*  Overlay Gradient */}
       <div className="absolute inset-0 bg-gradient-to-r from-pink-300 via-purple-200 to-blue-300 opacity-70 z-0" />
 
-      {/* 🔙 Back to Home */}
+      {/*  Back to Home */}
       <Link
         to="/"
         className="absolute top-4 left-4 text-purple-700 text-sm hover:underline z-10"
@@ -81,7 +81,7 @@ export const Login = () => {
         ← Back to Home
       </Link>
 
-      {/* 🧾 Logo + Title */}
+      {/*  Logo + Title */}
       <motion.div
         className="z-10 text-center mb-6 "
         variants={fadeUp}
@@ -91,7 +91,7 @@ export const Login = () => {
       >
         <div className="flex flex-col items-center ">
           <div className="flex items-center gap-2 mt-8 sm:mt-0">
-            {/* ✅ Icon with Title */}
+            {/*  Icon with Title */}
             <AiOutlineBarChart className="text-purple-700 text-3xl" />
             <h1 className="text-2xl font-bold text-purple-700">
               ExcelAnalyzer
@@ -103,7 +103,7 @@ export const Login = () => {
         </div>
       </motion.div>
 
-      {/* 🧊 Login Card */}
+      {/* Login Card */}
       <motion.div
         className="relative z-10 w-full max-w-md bg-white bg-opacity-30 backdrop-blur-xl rounded-2xl shadow-2xl px-8 py-10 mb-16"
         variants={fadeUp}
