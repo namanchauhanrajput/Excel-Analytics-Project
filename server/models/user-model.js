@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
 
 // --------------------------------------------
-// 🧱 Define User Schema using Mongoose
+//  Define User Schema using Mongoose
 // --------------------------------------------
 const userSchema = new mongoose.Schema({
   username: { type: String, required: true },       // 👤 User's name
@@ -34,7 +34,7 @@ userSchema.pre("save", async function (next) {
 */
 
 // --------------------------------------------
-// 🔄 Password Comparison Method (Plain text version)
+//  Password Comparison Method (Plain text version)
 // --------------------------------------------
 // 🧪 Only for development — compares directly without bcrypt
 userSchema.methods.comparePassword = async function (password) {
