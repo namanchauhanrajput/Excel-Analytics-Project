@@ -1,9 +1,9 @@
 // --------------------------------------------
-// 🛡️ Middleware to allow only Admin users
+// Middleware to allow only Admin users
 // --------------------------------------------
 const adminMiddleware = async (req, res, next) => {
   try {
-    console.log(req.user); // 🧠 User info is already attached by authMiddleware
+    console.log(req.user); // User info is already attached by authMiddleware
 
     const adminRole = req.user.isAdmin; // 🔍 Check isAdmin flag from user object
 
@@ -20,6 +20,6 @@ const adminMiddleware = async (req, res, next) => {
 };
 
 // --------------------------------------------
-// 🚀 Export the middleware
+// Export the middleware
 // --------------------------------------------
 module.exports = adminMiddleware;
