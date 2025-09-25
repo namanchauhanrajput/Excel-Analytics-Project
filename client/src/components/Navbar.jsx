@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import { AiOutlineBarChart } from "react-icons/ai"; // ✅ Icon import
+import { AiOutlineBarChart } from "react-icons/ai"; //  Icon import
 import { useAuth } from "../store/auth";
 import { toast } from "react-toastify";
 
@@ -20,7 +20,7 @@ export const Navbar = () => {
     navigate("/");
   };
 
-  // ✅ Helper for active/inactive links (underline हटा दी)
+  //  Helper for active/inactive links (underline हटा दी)
   const getLinkClass = ({ isActive }) =>
     isActive
       ? "text-purple-700 font-semibold"
@@ -29,7 +29,7 @@ export const Navbar = () => {
   return (
     <header className="bg-gradient-to-r from-purple-100 to-blue-100 shadow-sm sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-        {/* ✅ Icon + Title (Clickable Home) */}
+        {/*  Icon + Title (Clickable Home) */}
         <NavLink
           to="/"
           className="flex items-center gap-2 cursor-pointer select-none"
@@ -50,7 +50,7 @@ export const Navbar = () => {
 
         {/* Desktop Nav */}
         <ul className="hidden md:flex items-center space-x-6 text-lg">
-          {/* ✅ Home केवल non-loggedin users के लिए */}
+          {/*  Home only for non-logged in users*/}
           {!isLoggedIn && (
             <li>
               <NavLink to="/" className={getLinkClass}>
@@ -111,7 +111,7 @@ export const Navbar = () => {
         }`}
       >
         <ul className="px-6 space-y-4 py-4 text-base font-medium text-gray-700">
-          {/* ✅ Home केवल non-loggedin users के लिए */}
+          {/* Home केवल non-loggedin users के लिए */}
           {!isLoggedIn && (
             <li>
               <NavLink to="/" className={getLinkClass} onClick={closeMenu}>
