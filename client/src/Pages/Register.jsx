@@ -58,7 +58,7 @@ export const Register = () => {
   return (
     <section className="min-h-screen pt-16 sm:pt-6 bg-gradient-to-r from-pink-200 via-purple-200 to-blue-200 flex flex-col items-center justify-center px-4 py-6 relative overflow-hidden">
       
-      {/* ✅ Icon + Title outside card (bahar) */}
+      {/* Icon + Title outside card (bahar) */}
       <motion.div
         className="text-center mb-8"
         initial={{ opacity: 0, y: -30 }}
@@ -77,7 +77,7 @@ export const Register = () => {
           </p>
         </div>
       </motion.div>
-      {/* 🔙 Back to Home */}
+      {/* Back to Home */}
             <Link
               to="/"
               className="absolute top-4 left-4 text-purple-700 text-sm hover:underline z-10"
