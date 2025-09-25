@@ -2,7 +2,7 @@ const User = require("../models/user-model");  // 🧑‍💻 User model (MongoD
 const bcrypt = require("bcryptjs");            // 🔐 For password hashing (if used)
 
 // --------------------------------------------
-// ✅ Register Controller (POST /api/auth/register)
+// Register Controller (POST /api/auth/register)
 // --------------------------------------------
 const register = async (req, res) => {
   try {
