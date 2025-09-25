@@ -1,4 +1,3 @@
-// src/pages/DashboardHistory.jsx
 import { useEffect, useState, useCallback } from "react";
 import { useAuth } from "../store/auth";
 import axios from "axios";
@@ -82,7 +81,7 @@ export const DashboardHistory = () => {
         const link = document.createElement("a");
         link.href = dataUrl;
         const safeName = (chart.title || "chart").replace(
-          /[^a-z0-9_\-. ]/gi, // ✅ fixed regex (no unnecessary escape)
+          /[^a-z0-9_\-. ]/gi, // fixed regex (no unnecessary escape)
           "_"
         );
         link.download = `${safeName}.png`;
@@ -98,7 +97,7 @@ export const DashboardHistory = () => {
 
         pdf.addImage(imgData, "PNG", 0, 0, canvas.width, canvas.height);
         const safeName = (chart.title || "chart").replace(
-          /[^a-z0-9_\-. ]/gi, // ✅ fixed regex
+          /[^a-z0-9_\-. ]/gi, //fixed regex
           "_"
         );
         pdf.save(`${safeName}.pdf`);
