@@ -39,7 +39,7 @@ export const AdminCharts = () => {
     }
   };
 
-  // 🔥 Mast vibrant color palette
+  // Mast vibrant color palette
   const COLORS = [
     "#6366F1", // Indigo
     "#F43F5E", // Rose
