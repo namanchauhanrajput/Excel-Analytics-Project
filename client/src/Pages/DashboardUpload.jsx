@@ -1,4 +1,3 @@
-// Required imports
 import { useState, useContext } from "react";
 import { ExcelDataContext } from "../context/ExcelDataContext";
 import * as XLSX from "xlsx";
@@ -25,7 +24,7 @@ export const DashboardUpload = () => {
   const { setExcelData, setColumns, columns } = useContext(ExcelDataContext);
   const { authorizationToken } = useAuth();
 
-  // 🎨 Mast vibrant color palette
+  // Mast vibrant color palette
   const COLORS = [
     "#6366F1", // Indigo
     "#F43F5E", // Rose
@@ -131,7 +130,7 @@ export const DashboardUpload = () => {
 
   return (
     <div className="max-w-6xl mx-auto space-y-12 mt-12">
-      {/* ✅ Upload Section */}
+      {/* Upload Section */}
       <div className="bg-white p-10 rounded-3xl shadow-lg border border-gray-200">
         <div className="flex items-center gap-3 mb-6">
           <UploadCloud className="text-violet-600" size={28} />
@@ -163,7 +162,7 @@ export const DashboardUpload = () => {
         )}
       </div>
 
-      {/* ✅ Data Table Preview */}
+      {/* Data Table Preview */}
       <AnimatePresence>
         {previewData.length > 0 && (
           <motion.div
@@ -208,7 +207,7 @@ export const DashboardUpload = () => {
         )}
       </AnimatePresence>
 
-      {/* ✅ Chart Generation Section */}
+      {/* Chart Generation Section */}
       {previewData.length > 0 && (
         <div className="p-6 rounded-xl shadow border">
           <h3 className="text-xl font-bold text-blue-700 mb-4">
@@ -278,7 +277,7 @@ export const DashboardUpload = () => {
             </div>
           </div>
 
-          {/* ✅ Chart Display & Download */}
+          {/* Chart Display & Download */}
           {chartData && (
             <div className="mt-6 w-full px-4 space-y-6">
               <div
