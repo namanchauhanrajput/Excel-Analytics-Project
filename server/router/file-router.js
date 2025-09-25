@@ -23,13 +23,13 @@ router.post("/upload", upload.single("file"), (req, res) => {
     const sheetName = workbook.SheetNames[0];
     const sheet = workbook.Sheets[sheetName];
 
-    // 🔄 Convert sheet to JSON
+    //  Convert sheet to JSON
     const data = xlsx.utils.sheet_to_json(sheet);
 
     // 🧱 Extract column names from first row (keys)
     const columns = Object.keys(data[0] || {});
 
-    // 📤 Respond with columns and rows
+    //  Respond with columns and rows
     res.status(200).json({ message: "File parsed", columns, rows: data });
   } catch (error) {
     console.error("Excel parse error:", error);
