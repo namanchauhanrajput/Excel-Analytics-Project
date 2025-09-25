@@ -117,7 +117,7 @@ export const DashboardLayout = () => {
         </nav>
       </aside>
 
-      {/* 🔳 Mobile Header */}
+      {/* Mobile Header */}
       <div className="sm:hidden fixed top-0 left-0 right-0 flex items-center justify-between p-4 bg-gradient-to-r from-purple-50 to-blue-50 z-50 shadow-md">
         <div className="flex items-center gap-4">
           <button
