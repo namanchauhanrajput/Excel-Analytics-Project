@@ -13,7 +13,7 @@ const authMiddleware = async (req, res, next) => {
     }
 
     // --------------------------------------------
-    // 🧹 Clean token: Remove "Bearer" prefix if present
+    //  Clean token: Remove "Bearer" prefix if present
     // --------------------------------------------
     const jwtToken = token.replace("Bearer", "").trim();
     console.log("Token from middleware:", jwtToken);
@@ -33,13 +33,13 @@ const authMiddleware = async (req, res, next) => {
     }
 
     // --------------------------------------------
-    // ✅ Attach user info to request object
+    //  Attach user info to request object
     // --------------------------------------------
     req.user = userData;         // 🧠 Full user object (without password)
     req.token = jwtToken;        // 🎟️ Original token
     req.userID = userData._id;   // 🆔 MongoDB User ID
 
-    next(); // ✅ Pass control to next middleware or route
+    next(); //  Pass control to next middleware or route
 
   } catch (error) {
     console.error("Auth middleware error:", error);
@@ -48,6 +48,6 @@ const authMiddleware = async (req, res, next) => {
 };
 
 // --------------------------------------------
-// 🚀 Export middleware function
+// Export middleware function
 // --------------------------------------------
 module.exports = authMiddleware;
