@@ -4,7 +4,7 @@ const Chart = require("../models/chart-model"); // 📊 Chart model
 const authMiddleware = require("../middlewares/auth-middleware"); // ✅ Verify logged-in user
 const adminMiddleware = require("../middlewares/admin-middleware"); // 🔐 Verify admin only
 
-// ✅ [GET] Get all charts (Admin only)
+//  [GET] Get all charts (Admin only)
 // ➤ Used to show all users' charts with their username/email
 router.get("/", authMiddleware, adminMiddleware, async (req, res) => {
   try {
@@ -15,7 +15,7 @@ router.get("/", authMiddleware, adminMiddleware, async (req, res) => {
   }
 });
 
-// ✅ [POST] Save a new chart (Only logged-in user can do this)
+//  [POST] Save a new chart (Only logged-in user can do this)
 // ➤ Save chart data to DB with user ID
 router.post("/save", authMiddleware, async (req, res) => {
   const { labels, values, title, type } = req.body;
@@ -29,14 +29,14 @@ router.post("/save", authMiddleware, async (req, res) => {
       createdBy: req.user._id,    // 👤 user who created this chart
     });
 
-    await chart.save(); // 💾 save to MongoDB
+    await chart.save(); //  save to MongoDB
     res.status(201).json({ message: "Chart saved", chart });
   } catch (err) {
     res.status(400).json({ message: "Failed to save chart" });
   }
 });
 
-// ✅ [DELETE] Delete chart by ID (Admin only)
+//  [DELETE] Delete chart by ID (Admin only)
 // ➤ Admin can delete any chart by its _id
 router.delete("/delete/:id", authMiddleware, adminMiddleware, async (req, res) => {
   const chartId = req.params.id;
@@ -52,7 +52,7 @@ router.delete("/delete/:id", authMiddleware, adminMiddleware, async (req, res) =
   }
 });
 
-// ✅ [GET] Get user-specific chart history
+// [GET] Get user-specific chart history
 // ➤ Returns all charts created by the logged-in user (sorted by date)
 router.get("/history", authMiddleware, async (req, res) => {
   try {
