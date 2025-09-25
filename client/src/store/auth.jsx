@@ -11,20 +11,20 @@ export const AuthProvider = ({ children }) => {
 
   const isLoggedIn = !!token;
 
-  // ✅ Store token in localStorage
+  //  Store token in localStorage
   const storeTokenInLS = (serverToken) => {
     localStorage.setItem("token", serverToken);
     setToken(serverToken);
   };
 
-  // ✅ Logout function
+  //  Logout function
   const logoutUser = () => {
     localStorage.removeItem("token");
     setToken("");
     setUser(null);
   };
 
-  // ✅ Get user data from backend  on token change
+  //  Get user data from backend  on token change
   useEffect(() => { 
     const getUser = async () => {
       setIsLoading(true);
@@ -32,7 +32,7 @@ export const AuthProvider = ({ children }) => {
         const response = await fetch("https://excel-analytics-project.onrender.com/api/auth/user", {
           method: "GET",
           headers: {
-            Authorization: `Bearer ${token}`, // ✅ used directly, no external variable needed
+            Authorization: `Bearer ${token}`, // used directly, no external variable needed
           },
         });
 
@@ -57,9 +57,9 @@ export const AuthProvider = ({ children }) => {
       setUser(null);
       setIsLoading(false);
     }
-  }, [token]); // ✅ No eslint warning now
+  }, [token]); //  No eslint warning now
 
-  // ✅ Context value
+  //  Context value
   return (
     <AuthContext.Provider
       value={{
